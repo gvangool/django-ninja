@@ -187,7 +187,7 @@ class OpenAPISchema(dict):
                 if "description" in p_schema:
                     param["description"] = p_schema["description"]
                 if "examples" in p_schema:
-                    param["examples"] = p_schema["examples"]
+                    param["examples"] = p_schema.pop("examples")
                 elif "example" in p_schema:
                     param["example"] = p_schema["example"]
                 if "deprecated" in p_schema:
