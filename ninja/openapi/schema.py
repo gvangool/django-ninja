@@ -63,7 +63,7 @@ class OpenAPISchema(dict):
                 ),
                 ("paths", self.get_paths()),
                 ("components", self.get_components()),
-                ("servers", api.servers),
+                ("servers", api.servers or []),  # None is not valid for servers
             ]
         )
         for k, v in api.openapi_extra.items():
