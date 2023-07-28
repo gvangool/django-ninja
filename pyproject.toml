@@ -68,6 +68,7 @@ test = [
     "flake8",
     "mypy==0.931",
     "django-stubs",
+    "openapi-spec-validator==0.6.0",
 ]
 doc = [
     "mkdocs",

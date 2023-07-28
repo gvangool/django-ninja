@@ -1,3 +1,4 @@
+import json
 import sys
 from typing import Any, List, Union
 from unittest.mock import Mock
@@ -774,6 +775,17 @@ def test_new_union_payload_type(schema):
         },
         "required": True,
     }
+
+
+def test_validate_schema(schema):
+    pytest.importorskip("openapi_spec_validator")
+
+    from openapi_spec_validator import validate_spec
+
+    # Export the schema as if it's going to the outside world
+    json_schema = JSONRenderer().render(None, schema, response_status=200)
+    # If no exception is raised by validate_spec(), the spec is valid.
+    validate_spec(json.loads(json_schema))
 
 
 def test_get_openapi_urls():
